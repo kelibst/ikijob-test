@@ -3,14 +3,15 @@ const initialState = {
     username: '',
     loggedIn: false,
     currentUser: {},
+    users: {}
 };
   
   const userReducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'USER_FAVS':
+      case 'GET_USERS':
         return {
           ...state,
-          user_favorites: action.payload,
+          users: action.payload,
         };
   
       default:

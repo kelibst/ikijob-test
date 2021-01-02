@@ -5,7 +5,6 @@ const initialState = {
 const successReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SUCC_MSG':
-
         return {
             ...state,
             message: action.payload,
