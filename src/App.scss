@@ -5,3 +5,15 @@
     min-width: 100%;
     top: 5rem;
 }
+
+.homepage {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.user-card.card {
+    min-width: 150px;
+    max-width: 300px;
+    margin: 1rem 0;
+}

@@ -3,38 +3,46 @@ import Axios from "axios";
 const authUser = (data) => (dispatch) => {};
 
 const createUser = (data) => (dispatch) => {
-  const url = 'https://reqres.in/api/users';
+  const url = "https://reqres.in/api/users";
   const userData = {
     data: data,
   };
   Axios.post(url, userData)
-    .then(res => {
+    .then((res) => {
       dispatch({
-        type: 'CREATE_USER',
+        type: "CREATE_USER",
         payload: res.data,
       });
       const payload = {
-        message: 'Your registration is successfull. We are redirecting you',
-        type: 'create_user',
+        message: "Your registration is successfull. We are redirecting you",
+        type: "create_user",
       };
       dispatch({
-        type: 'SUCC_MSG',
-        payload
-      })
-      
+        type: "SUCC_MSG",
+        payload,
+      });
     })
-    .catch(err => dispatch({
-      type: 'CREATE_ERROR',
-      payload: err,
-    }));
+    .catch((err) =>
+      dispatch({
+        type: "CREATE_ERROR",
+        payload: err,
+      })
+    );
+};
+
+const createError = (message) => (dispatch) => {
+  debugger;
+  dispatch({
+    type: "CREATE_ERROR",
+    payload: message,
+  });
 };
 
 const fetchUser = (username) => (dispatch) => {};
 
 const fetchUsers = () => (dispatch) => {
-  
   const url = "https://reqres.in/api/users";
-  console.log('ping')
+  console.log("ping");
   Axios.get(url)
     .then((res) => {
       dispatch({
@@ -42,13 +50,13 @@ const fetchUsers = () => (dispatch) => {
         payload: res.data,
       });
       const payload = {
-        message: 'List of all Users',
-        type: 'get_users',
+        message: "List of all Users",
+        type: "get_users",
       };
       dispatch({
-        type: 'SUCC_MSG',
-        payload
-      })
+        type: "SUCC_MSG",
+        payload,
+      });
     })
     .catch((err) =>
       dispatch({
@@ -60,4 +68,11 @@ const fetchUsers = () => (dispatch) => {
 
 const logCurrentUserOut = () => (dispatch) => {};
 
-export { createUser, fetchUser, fetchUsers, logCurrentUserOut, authUser };
+export {
+  createUser,
+  fetchUser,
+  createError,
+  fetchUsers,
+  logCurrentUserOut,
+  authUser,
+};

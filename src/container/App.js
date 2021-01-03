@@ -12,10 +12,16 @@ import Dashboard from "./Dashboard";
 
 class App extends Component {
   render() {
-    const { success } = this.props;
+    const { success, Error } = this.props;
     return (
       <div className="content">
         {success.message && (
+          <div className="success-container">
+            <Success />
+          </div>
+        )}
+
+        {Error.length && (
           <div className="success-container">
             <Success />
           </div>
@@ -35,6 +41,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   success: state.succMsg.message,
+  Error: state.error.err,
 });
 
 export default connect(mapStateToProps, null)(App);
