@@ -4,12 +4,12 @@ import { createError } from '../store/actions/userAction'
 
 class Dashboard extends Component {
     componentDidMount(){
-        const { currentUser, createError } = this.props
+        const { currentUser, createError, history } = this.props
         const curUser  = localStorage.getItem("currentUser");
         const err = {
-            message: "You are not logged In."
+            message: "You are not logged In. Kindly login!"
         }
-    !currentUser.id && createError(err)
+    !currentUser.id && createError(err) && history.push('/login')
         console.log( !curUser || !currentUser.id, this.props)
     }
     render() {

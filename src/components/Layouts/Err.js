@@ -25,7 +25,7 @@ class Err extends Component {
   componentDidUpdate(){
     const { show } = this.state
     const { createError } = this.props;
-    show && Error.length === '' &&
+    show && Error.message &&
     createError({});
   }
 
