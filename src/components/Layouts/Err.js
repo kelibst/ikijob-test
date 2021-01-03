@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createError } from '../../store/actions/userAction'
 
-class ErrorDisplay extends Component {
+class Err extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,10 +55,10 @@ class ErrorDisplay extends Component {
   }
 }
 
-ErrorDisplay.defaultProps = {
+Err.defaultProps = {
   error: PropTypes.any,
 };
-ErrorDisplay.propTypes = {
+Err.propTypes = {
   error: PropTypes.any,
 
   createError: PropTypes.any.isRequired,
@@ -68,4 +68,4 @@ const mapStateToProps = (state) => ({
   Error: state.error.err,
 });
 
-export default connect(mapStateToProps, { createError })(ErrorDisplay);
+export default connect(mapStateToProps, { createError })(Err);

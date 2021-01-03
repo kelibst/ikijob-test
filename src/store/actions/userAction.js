@@ -30,13 +30,10 @@ const createUser = (data) => (dispatch) => {
     );
 };
 
-const createError = (message) => (dispatch) => {
-  debugger;
-  dispatch({
+const createError = (message) => (dispatch) => dispatch({
     type: "CREATE_ERROR",
     payload: message,
   });
-};
 
 const fetchUser = (username) => (dispatch) => {};
 

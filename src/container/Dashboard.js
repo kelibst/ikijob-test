@@ -9,7 +9,8 @@ class Dashboard extends Component {
         const err = {
             message: "You are not logged In."
         }
-        !curUser || !currentUser.id && createError(err)
+    !currentUser.id && createError(err)
+        console.log( !curUser || !currentUser.id, this.props)
     }
     render() {
         

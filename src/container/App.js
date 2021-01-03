@@ -9,6 +9,7 @@ import HomePage from "./HomePage";
 import Footer from "../components/Layouts/Footer";
 import Success from "../components/Layouts/Success";
 import Dashboard from "./Dashboard";
+import Err from '../components/Layouts/Err'
 
 class App extends Component {
   render() {
@@ -21,9 +22,9 @@ class App extends Component {
           </div>
         )}
 
-        {Error.length && (
+        {Error.message && (
           <div className="success-container">
-            <Success />
+            <Err />
           </div>
         )}
         <BrowserRouter>
