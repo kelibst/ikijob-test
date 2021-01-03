@@ -14,14 +14,21 @@ class Success extends Component {
 
   componentDidMount() {
     const { show } = this.state;
-    setInterval(() => {
       show &&
+      setInterval(() => {
         this.setState({
           show: false,
         });
-    }, 3000);
+      }, 3000);
   }
-  
+
+  componentDidUpdate(){
+    const { show } = this.state
+    const { successWithMessage, success } = this.props;
+    show && success.type === 'create_user' &&
+    successWithMessage("");
+  }
+
   render() {
     const setShow = () => {
       const { successWithMessage } = this.props;

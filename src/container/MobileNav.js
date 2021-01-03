@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import {
+  Button,
   Nav,
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
 import Icofont from "react-icofont";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import './NavBar.scss'
 
 class MobileNav extends Component {
-  render() {
+ 
+  render() { 
+    const logUserOut = () => {
+    localStorage.removeItem('currentUser');
+   const { history } = this.props
+
+    history.push('/login');
+  }
     return (
       <div className="mobile-nav d-block d-sm-none text-center">
-        <Navbar variant="dark" expand="lg">
+        <Navbar variant="dark" expand="sm">
           <Navbar.Brand href="/" className="font-weight-bolder">
             <span className="brand-icon">
               <Icofont icon="attachment" />
@@ -64,6 +72,7 @@ class MobileNav extends Component {
               >
                 <Icofont icon="user" /> Login
               </NavLink>
+              <Button variant="danger" className="text-white" onClick={logUserOut}>Log Out</Button>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -72,4 +81,4 @@ class MobileNav extends Component {
   }
 }
 
-export default MobileNav;
+export default withRouter(MobileNav);

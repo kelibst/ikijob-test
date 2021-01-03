@@ -15,7 +15,7 @@ const createUser = (data) => (dispatch) => {
       });
       const payload = {
         message: 'Your registration is successfull. We are redirecting you',
-        type: 'get_users',
+        type: 'create_user',
       };
       dispatch({
         type: 'SUCC_MSG',

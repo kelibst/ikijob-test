@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Nav, Navbar, Button } from 'react-bootstrap'
 import Icofont from 'react-icofont'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import './NavBar.scss'
 
 class NavBar extends Component {
+
+  
     render() {
+      const logUserOut = () => {
+        localStorage.removeItem('currentUser');
+       const { history } = this.props
+  
+        history.push('/login');
+      }
         return (
             <Navbar
                 collapseOnSelect
-                expand="lg"
+                expand="sm"
                 className="mb-5 d-none d-sm-flex border-bottom"
                 variant="dark"
                 >
@@ -60,10 +68,12 @@ class NavBar extends Component {
                 { ' '}
                 Login
                 </NavLink>
+
+                <Button variant="danger" className="text-white" onClick={logUserOut}>Log Out</Button>
               </Nav>
             </Navbar>
         )
     }
 }
 
-export default NavBar
+export default withRouter(NavBar)

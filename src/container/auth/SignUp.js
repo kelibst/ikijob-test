@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createUser } from '../../store/actions/userAction';
+import successWithMessage from '../../store/actions/successWithMessage';
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +18,17 @@ class SignUp extends Component {
         password_confirmation: '',
       },
     };
+  }
+
+  componentDidUpdate(){
+    const curUser = localStorage.getItem('currentUser');
+    const { successWithMessage, currentUser, history } = this.props
+    if (currentUser.length || curUser){
+      successWithMessage("You are Logged In.")
+      history.push(`/dashboard/keli`)
+    }
+      
+
   }
 
   render() {
@@ -133,5 +145,6 @@ const mapStateToProps = state => ({
   currentUser: state.userData.currentUser,
 });
 export default connect(mapStateToProps, {
-  createUser
+  createUser,
+  successWithMessage,
 })(SignUp);
