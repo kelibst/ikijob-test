@@ -12,22 +12,16 @@ class Success extends Component {
     };
   }
 
-  componentDidMount(){
-      const { show } = this.state;
-      const { successWithMessage } = this.props;
-      setInterval(()=> {
-        successWithMessage("");
-        show && this.setState({
+  componentDidMount() {
+    const { show } = this.state;
+    setInterval(() => {
+      show &&
+        this.setState({
           show: false,
         });
-      },3000)
+    }, 3000);
   }
-
-  componentWillUnmount() {
-    const { successWithMessage } = this.props;
-    successWithMessage("");
-  }
-
+  
   render() {
     const setShow = () => {
       const { successWithMessage } = this.props;
@@ -41,7 +35,12 @@ class Success extends Component {
     const { success } = this.props;
     return (
       <div className="alert-success col-sm-10 col-md-6 col-ld-4 mx-auto">
-        <Alert show={show} variant="success" dismissible onClose={() => setShow()}>
+        <Alert
+          show={show}
+          variant="success"
+          dismissible
+          onClose={() => setShow()}
+        >
           <Alert.Heading>{success.message}</Alert.Heading>
         </Alert>
       </div>
@@ -50,12 +49,12 @@ class Success extends Component {
 }
 
 Success.defaultProps = {
-  success: PropTypes.shape,
+  success: PropTypes.any,
 };
 Success.propTypes = {
-  success: PropTypes.shape,
+  success: PropTypes.any,
 
-  successWithMessage: PropTypes.func.isRequired,
+  successWithMessage: PropTypes.any.isRequired,
 };
 
 const mapStateToProps = (state) => ({

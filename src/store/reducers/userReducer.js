@@ -13,7 +13,12 @@ const initialState = {
           ...state,
           users: action.payload,
         };
-  
+
+        case 'CREATE_USER':
+          return {
+            ...state,
+            currentUser: action.payload,
+          };
       default:
         return state;
     }

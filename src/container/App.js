@@ -6,25 +6,27 @@ import Header from "../components/Layouts/Header";
 import Login from "./auth/Login";
 import SignUp from "./auth/SignUp";
 import HomePage from "./HomePage";
+import Footer from "../components/Layouts/Footer";
 import Success from "../components/Layouts/Success";
+import Dashboard from "./Dashboard";
 
 class App extends Component {
-  componentDidUpdate(nextProps){
-    this.props !== nextProps && console.log('props changes')
-    console.log(this.props)
-  }
   render() {
-    const { success } = this.props
+    const { success } = this.props;
     return (
       <div className="content">
-      {success && <div className="success-container">
-        <Success />
-      </div> }
+        {success.message && (
+          <div className="success-container">
+            <Success />
+          </div>
+        )}
         <BrowserRouter>
           <Route path="/" component={Header} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/" component={HomePage} />
+          <Route path="/dasboard/:id" component={Dashboard} />
+          <Route exact path="/" component={HomePage} />
+          <Footer />
         </BrowserRouter>
       </div>
     );
@@ -33,6 +35,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   success: state.succMsg.message,
-})
+});
 
-export default connect(mapStateToProps, null )(App);
+export default connect(mapStateToProps, null)(App);

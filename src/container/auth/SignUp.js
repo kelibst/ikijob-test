@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { createUser } from '../../store/actions/userAction';
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +12,6 @@ class SignUp extends Component {
       userData: {
         email: '',
         password: '',
-        username: '',
         firstname: '',
         lastname: '',
         password_confirmation: '',
@@ -31,31 +31,16 @@ class SignUp extends Component {
         },
       });
     };
-    // const {
-    //   createUser,
-    //   currentUser,
-    //   authUser,
-    //   errors,
-    //   loading,
-    //   unLoad,
-    // } = this.props;
+    const {
+      createUser,
+    } = this.props;
     const { isSubmit } = this.state;
 
     const handleSubmit = e => {
       e.preventDefault();
       const { userData } = this.state;
       this.setState({ isSubmit: true });
-      // createUser(userData);
-      // unLoad({ loading: true });
-      // if (currentUser.id) {
-      //   const { email, password, username } = userData;
-      //   const data = {
-      //     username,
-      //     email,
-      //     password,
-      //   };
-      //   authUser(data);
-      // }
+      createUser(userData)
     };
 
     return (
@@ -82,15 +67,6 @@ class SignUp extends Component {
               required
               type="text"
               placeholder="Enter your last name"
-              onChange={handleChange}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="username">
-            <Form.Control
-              required
-              type="text"
-              placeholder="Enter your unique username"
               onChange={handleChange}
             />
           </Form.Group>
@@ -144,18 +120,18 @@ SignUp.propTypes = {
   loading: PropTypes.string,
   errors: PropTypes.any,
   loggedIn: PropTypes.any,
-  createUser: PropTypes.func.isRequired,
   username: PropTypes.any,
+  success: PropTypes.any,
   authUser: PropTypes.func.isRequired,
+  createUser: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
   unLoad: PropTypes.func.isRequired,
   history: PropTypes.any,
 };
 const mapStateToProps = state => ({
-  loading: state.userData.loading,
-  loggedIn: state.userData.loggedIn,
+  success: state.succMsg.loggedIn,
   currentUser: state.userData.currentUser,
 });
 export default connect(mapStateToProps, {
-
+  createUser
 })(SignUp);
