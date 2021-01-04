@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import { Nav, Navbar, Button } from 'react-bootstrap'
 import Icofont from 'react-icofont'
+import { connect } from 'react-redux'
 import { NavLink, withRouter } from 'react-router-dom'
+import { logCurrentUserOut } from '../store/actions/userAction'
 import './NavBar.scss'
 
 class NavBar extends Component {
 
   
     render() {
+      const { currentUser } = this.props
       const logUserOut = () => {
         localStorage.removeItem('currentUser');
        const { history } = this.props
-  
+        logCurrentUserOut()
         history.push('/login');
       }
         return (
@@ -60,20 +63,31 @@ class NavBar extends Component {
                 Play
                 </NavLink>
 
-                <NavLink
-                to={`/login`}
-                className="nav-item text-uppercase font-weight-bolder px-3"
-                >
-                <Icofont icon="user"/>
-                { ' '}
-                Login
-                </NavLink>
-
-                <Button variant="danger" className="text-white" onClick={logUserOut}>Log Out</Button>
+                {currentUser.id ? (
+                  <Button
+                    variant="danger"
+                    className="text-white"
+                    onClick={logUserOut}
+                  >
+                    Log Out
+                  </Button>
+                ) : (
+                  <NavLink
+                    to={`/login`}
+                    className="nav-item text-uppercase font-weight-bolder px-3"
+                  >
+                    <Icofont icon="user" /> Login
+                  </NavLink>
+                )}
               </Nav>
             </Navbar>
         )
     }
 }
+const mapStateToProps = state => ({
+  currentUser: state.userData.currentUser,
+});
 
-export default withRouter(NavBar)
+const ShowTheLocationWithRouter = withRouter(NavBar);
+
+export default connect(mapStateToProps, {logCurrentUserOut})(ShowTheLocationWithRouter)

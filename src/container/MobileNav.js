@@ -1,23 +1,20 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Icofont from "react-icofont";
+import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
-import './NavBar.scss'
+import { logCurrentUserOut } from "../store/actions/userAction";
+import "./NavBar.scss";
 
 class MobileNav extends Component {
- 
-  render() { 
+  render() {
+    const { currentUser } = this.props
     const logUserOut = () => {
-    localStorage.removeItem('currentUser');
-   const { history } = this.props
-
-    history.push('/login');
-  }
+      localStorage.removeItem("currentUser");
+      const { history } = this.props;
+      logCurrentUserOut();
+      history.push("/login");
+    };
     return (
       <div className="mobile-nav d-block d-sm-none text-center">
         <Navbar variant="dark" expand="sm">
@@ -65,14 +62,22 @@ class MobileNav extends Component {
               >
                 <Icofont icon="play" /> Play
               </NavLink>
-
-              <NavLink
-                to={`/contact`}
-                className="nav-item text-uppercase font-weight-bolder px-3"
-              >
-                <Icofont icon="user" /> Login
-              </NavLink>
-              <Button variant="danger" className="text-white" onClick={logUserOut}>Log Out</Button>
+              {currentUser.id ? (
+                <Button
+                  variant="danger"
+                  className="text-white"
+                  onClick={logUserOut}
+                >
+                  Log Out
+                </Button>
+              ) : (
+                <NavLink
+                  to={`/login`}
+                  className="nav-item text-uppercase font-weight-bolder px-3"
+                >
+                  <Icofont icon="user" /> Login
+                </NavLink>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -80,5 +85,12 @@ class MobileNav extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  currentUser: state.userData.currentUser,
+});
 
-export default withRouter(MobileNav);
+const ShowTheLocationWithRouter = withRouter(MobileNav);
+
+export default connect(mapStateToProps, { logCurrentUserOut })(
+  ShowTheLocationWithRouter
+);

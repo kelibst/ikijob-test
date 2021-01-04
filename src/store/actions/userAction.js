@@ -39,7 +39,6 @@ const fetchUser = (username) => (dispatch) => {};
 
 const fetchUsers = () => (dispatch) => {
   const url = "https://reqres.in/api/users";
-  console.log("ping");
   Axios.get(url)
     .then((res) => {
       dispatch({
@@ -63,7 +62,15 @@ const fetchUsers = () => (dispatch) => {
     );
 };
 
-const logCurrentUserOut = () => (dispatch) => {};
+const logCurrentUserOut = () => (dispatch) => {
+  const res = {
+    data: {}
+  }
+  dispatch({
+    type: "GET_USERS",
+    payload: res.data,
+  });
+};
 
 export {
   createUser,

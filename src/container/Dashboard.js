@@ -10,7 +10,6 @@ class Dashboard extends Component {
             message: "You are not logged In. Kindly login!"
         }
     !currentUser.id && createError(err) && history.push('/login')
-        console.log( !curUser || !currentUser.id, this.props)
     }
     render() {
         
