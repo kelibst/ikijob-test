@@ -47,6 +47,11 @@ git clone https://https://github.com/kelibst/ikijob-test.git
 - Run `npm start` to launch local development server
 - The project should launch in your default browser
 - To mimic the action of a backend server I used https://reqres.in/. It is a placeholder server that provides login and signup functionalities.
+- You can use {
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka"
+}
+to login or visit the api documentation for more information.
 - visit http://127.0.0.1:3000/
 - You can also visit [live](https://ikij.herokuapp.com/) version for the full appp
 
