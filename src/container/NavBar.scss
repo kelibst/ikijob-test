@@ -1,0 +1,72 @@
+a.nav-item {
+    padding: .2rem 1rem;
+    color: rgb(255, 255, 255);
+    transition: all .2s;
+
+    &:hover{
+        border-radius: 1.2rem;
+        border: .5px solid #e4ebf3;
+        padding: .2rem 1rem;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    &.active{
+        border-radius: 1.2rem;
+        border: .5px solid #e4ebf3;
+        padding: .2rem 1rem;
+        color: #abccf0;
+    }
+}
+
+.navbar{
+    &-brand{
+        color: #dbdbdb !important;
+        font-weight: bolder !important;
+        font-size: 1.5rem;
+    }
+}
+
+.homepage-header{
+    &-min{
+        background: rgb(232,24,67);
+        background: radial-gradient(circle, rgba(232,24,67,1) 0%, rgba(5,42,226,1) 100%);
+    }
+    min-height: 90vh;
+    background: rgb(232,24,67);
+    background: radial-gradient(circle, rgba(232,24,67,1) 0%, rgba(5,42,226,1) 100%);
+}
+
+.hero{
+    &-elus{
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url('../images/ilus2.svg');
+    }
+        display: flex;
+        height: 70vh;
+
+    &-header {
+        color: azure;
+        line-height: 1.6;
+        font-weight: bolder;
+    }
+
+    &-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+        
+        %-desc-cont {
+            margin: 2rem 0 2rem 2rem;
+        }
+
+        &-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+}
