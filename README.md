@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# ikijob-test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application to allow user authentication
 
-## Available Scripts
 
-In the project directory, you can run:
+ikijob-test
 
-### `npm start`
+# Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Web page should be fully responsive.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. User should be able to sign up successfully and be able to use signed up details to login.
 
-### `npm test`
+3. After a successful login, user should be redirected to a home page which should  display the text "Welcome [First name]" and there should be a logout button to log the user out.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Project can be hosted on a public server which I should be able to access for review or can also be hosted locally(on your localhost) to be reviewed once done.
 
-### `npm run build`
+6. Please use any programming language or technologies/framework of your choice.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+7. Code should be hosted using GIT with meaningful commit statements.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Screenshot
+![Screenshot](./screenshot.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Live Demo
+[Live Demo Link](https://lihouses-react.herokuapp.com/) 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Built With
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- HTML 
+- CSS
+- SCSS
+- REACT-BOOTSTRAP
+- NPM
+- REACT
+- NODE
+- HEROKU
+- GITHUB ACTIONS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Usage
+- Clone the project 
+```
+git clone https://https://github.com/kelibst/ikijob-test.git
+```
+- Run `npm install` to install the local dependencies
+- Run `npm start` to launch local development server
+- The project should launch in your default browser
+- To mimic the action of a backend server I used https://reqres.in/. It is a placeholder server that provides login and signup functionalities.
+- visit http://127.0.0.1:3000/
+- You can also visit [live](https://lihouses-react.herokuapp.com/) version for the full appp
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Kelly Booster**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Github: [@kelibst](https://github.com/kelibst)
+- Twitter: [@keli_booster](https://twitter.com/keli_booster)
+- Linkedin: [Kekeli (Jiresse) Dogbevi
+](https://www.linkedin.com/in/kekeli-dogbevi-jiresse/)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# 🤝 Contributing
+Contributions, issues and feature requests are welcome!
+Feel free to check the issues page
 
-### Analyzing the Bundle Size
+Design idea by [Alexey Savitskiy on Behance](https://www.behance.net/alexey_savitskiy)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Show your support
+Give a ⭐️ if you like this project!
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is [MIT](lic.url)

@@ -115,6 +115,7 @@ const fetchUsers = () => (dispatch) => {
 };
 
 const logCurrentUserOut = () => (dispatch) => {
+  
   const res = {
     data: {},
   };
