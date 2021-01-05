@@ -23,7 +23,7 @@ ikijob-test
 ![Screenshot](./screenshot.gif)
 
 # Live Demo
-[Live Demo Link](https://lihouses-react.herokuapp.com/) 
+[Live Demo Link](https://ikij.herokuapp.com/) 
 
 
 # Built With
@@ -48,7 +48,7 @@ git clone https://https://github.com/kelibst/ikijob-test.git
 - The project should launch in your default browser
 - To mimic the action of a backend server I used https://reqres.in/. It is a placeholder server that provides login and signup functionalities.
 - visit http://127.0.0.1:3000/
-- You can also visit [live](https://lihouses-react.herokuapp.com/) version for the full appp
+- You can also visit [live](https://ikij.herokuapp.com/) version for the full appp
 
 
 ## Authors
