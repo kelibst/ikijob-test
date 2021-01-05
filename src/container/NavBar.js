@@ -10,9 +10,10 @@ class NavBar extends Component {
 
   
     render() {
-      const { currentUser } = this.props
+      const { currentUser, logCurrentUserOut } = this.props
       const logUserOut = () => {
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('jwtId');
        const { history } = this.props
         logCurrentUserOut()
         history.push('/login');
@@ -32,12 +33,14 @@ class NavBar extends Component {
                 IJIKOD
               </Navbar.Brand>
               <Nav className="mr-auto">
-              <NavLink
-                to={`/dashboard`}
+              {currentUser.id &&  
+                <NavLink
+                to={`/dashboard${currentUser.id}`}
                 className="nav-item text-uppercase font-weight-bolder px-3"
               >
                 Dashboard
-              </NavLink>
+              </NavLink>}
+             
               <NavLink
                 to={`/profile`}
                 className="nav-item text-uppercase font-weight-bolder px-3"

@@ -8,9 +8,10 @@ import "./NavBar.scss";
 
 class MobileNav extends Component {
   render() {
-    const { currentUser } = this.props
+    const { currentUser, logCurrentUserOut } = this.props
     const logUserOut = () => {
       localStorage.removeItem("currentUser");
+      localStorage.removeItem('jwtId');
       const { history } = this.props;
       logCurrentUserOut();
       history.push("/login");

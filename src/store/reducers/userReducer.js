@@ -22,6 +22,13 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: action.payload.data,
       };
+      case "AUTH_USER":
+      
+      
+      return {
+        ...state,
+        currentUser: action.payload.data,
+      };
     default:
       return state;
   }

@@ -10,8 +10,18 @@ import Footer from "../components/Layouts/Footer";
 import Success from "../components/Layouts/Success";
 import Dashboard from "./Dashboard";
 import Err from '../components/Layouts/Err'
+import { fetchUser } from "../store/actions/userAction";
+
 
 class App extends Component {
+  componentDidMount(){
+    const { currentUser, fetchUser } = this.props;
+    const curUser = localStorage.getItem("currentUser");
+    let jwtId = localStorage.getItem('jwtId')
+    jwtId = JSON.parse(jwtId)
+    currentUser && jwtId &&
+    !currentUser.id && jwtId.id && fetchUser(jwtId)
+  }
   render() {
     const { success, Error } = this.props;
     return (
@@ -43,6 +53,7 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   success: state.succMsg.message,
   Error: state.error.err,
+  currentUser: state.userData.currentUser,
 });
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, {fetchUser})(App);

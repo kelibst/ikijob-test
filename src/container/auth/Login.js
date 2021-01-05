@@ -1,22 +1,30 @@
 import React, { Component } from "react";
 import { Form, Spinner, Button } from "react-bootstrap";
-import './auth.scss'
+import { connect } from "react-redux";
+import { authUser } from "../../store/actions/userAction"
+import "./auth.scss";
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          isSubmit: false,
-          err: false,
-          data: {
-            email: '',
-            password: '',
-          },
-        };
-      }
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSubmit: false,
+      err: false,
+      data: {
+        email: "",
+        password: "",
+      },
+    };
+  }
 
-    const handleChange = e => {
+  componentDidUpdate(){
+    const { currentUser, history } = this.props;
+    currentUser.id
+        && history.push(`/dashboard/${currentUser.id}`);
+  }
+  render() {
+    const { authUser } = this.props
+    const handleChange = (e) => {
       const { id, value } = e.target;
       const { data } = this.state;
       this.setState({
@@ -28,21 +36,17 @@ class Login extends Component {
       });
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
       e.preventDefault();
       this.setState({
         isSubmit: true,
       });
-      const { data } = this.state;
-      //authUser(data);
-      // currentUser
-      //   && loggedIn
-      //   && history.push(`/dashboard/${currentUser.username}`);
-    };
 
-    const {
-        loggedIn, username, history,
-    } = this.props;
+      const { data } = this.state;
+       
+      authUser(data);
+      
+    };
     const { isSubmit } = this.state;
     return (
       <div className="auth-in">
@@ -54,59 +58,51 @@ class Login extends Component {
         </p>
 
         <Form
-        className="user-form p-5 shadow-lg bg-white"
-        onSubmit={handleSubmit}
-      >
-        <Form.Group controlId="username" className="pb-3">
-          <Form.Control
-            required
-            type="username"
-            placeholder="Enter Username"
-            onChange={handleChange}
-          />
-        </Form.Group>
+          className="user-form p-5 shadow-lg bg-white"
+          onSubmit={handleSubmit}
+        >
+          <Form.Group controlId="email" className="pb-3">
+            <Form.Control
+              required
+              type="email"
+              placeholder="Enter email"
+              onChange={handleChange}
+            />
+            <Form.Text className="text-muted">
+              We will never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
 
-        <Form.Group controlId="email" className="pb-3">
-          <Form.Control
-            required
-            type="email"
-            placeholder="Enter email"
-            onChange={handleChange}
-          />
-          <Form.Text className="text-muted">
-            We will never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+          <Form.Group controlId="password" className="pb-5">
+            <Form.Control
+              required
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+            />
+          </Form.Group>
 
-        <Form.Group controlId="password" className="pb-5">
-          <Form.Control
-            required
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-          />
-        </Form.Group>
+          {isSubmit && (
+            <div className="loading">
+              <Spinner animation="grow" variant="primary" />
+            </div>
+          )}
 
-        {isSubmit && (
-          <div className="loading">
-            <Spinner animation="grow" variant="primary" />
-          </div>
-        )}
-
-        <Button className="btn hero-btn w-100" type="submit">
-          Submit
-        </Button>
-        <p className="text-center mt-3 font-weight-bolder auth-text">OR</p>
-        <a href="/signup" className="my-3 text-center w-100 btn-link">
-          {' '}
-          Register
-        </a>
-      </Form>
+          <Button className="btn hero-btn w-100" type="submit">
+            Submit
+          </Button>
+          <p className="text-center mt-3 font-weight-bolder auth-text">OR</p>
+          <a href="/signup" className="my-3 text-center w-100 btn-link">
+            {" "}
+            Register
+          </a>
+        </Form>
       </div>
-
-      
     );
   }
 }
-
-export default Login;
+const mapStateToProps = state => ({
+  success: state.succMsg.loggedIn,
+  currentUser: state.userData.currentUser,
+});
+export default connect(mapStateToProps, { authUser })(Login);
