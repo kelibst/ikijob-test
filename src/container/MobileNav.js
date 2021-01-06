@@ -10,10 +10,10 @@ class MobileNav extends Component {
   render() {
     const { currentUser, logCurrentUserOut } = this.props
     const logUserOut = () => {
-      localStorage.removeItem("currentUser");
-      localStorage.removeItem('jwtId');
-      const { history } = this.props;
       logCurrentUserOut();
+      localStorage.removeItem("currentUser");
+      localStorage.removeItem("jwtId");
+      const { history } = this.props;  
       history.push("/login");
     };
     return (
@@ -23,12 +23,12 @@ class MobileNav extends Component {
             <span className="brand-icon">
               <Icofont icon="attachment" />
             </span>{" "}
-            AfrikaQuiz
+            IJIKOD
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            {currentUser.id &&  
+            {currentUser && currentUser.id &&  
               <NavLink
               to={`/dashboard/${currentUser.id}`}
               className="nav-item text-uppercase font-weight-bolder px-3"
@@ -70,7 +70,7 @@ class MobileNav extends Component {
               >
                 <Icofont icon="play" /> Play
               </NavLink>
-              {currentUser.id ? (
+              {currentUser && currentUser.id ? (
                 <Button
                   variant="danger"
                   className="text-white"

@@ -9,6 +9,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_USERS":
+      debugger
       return {
         ...state,
         users: action.payload,
@@ -22,9 +23,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: action.payload.data,
       };
-      case "AUTH_USER":
-      
-      
+      case "AUTH_USER":  
       return {
         ...state,
         currentUser: action.payload.data,
