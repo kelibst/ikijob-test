@@ -28,6 +28,13 @@ class MobileNav extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
+            {currentUser.id &&  
+              <NavLink
+              to={`/dashboard/${currentUser.id}`}
+              className="nav-item text-uppercase font-weight-bolder px-3"
+            >
+              Dashboard
+            </NavLink>}
               <NavLink
                 to={`/profile`}
                 className="nav-item text-uppercase font-weight-bolder px-3"

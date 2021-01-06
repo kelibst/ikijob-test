@@ -18,7 +18,7 @@ class Dashboard extends Component {
       const { currentUser } = this.props
     return (
       <div className="dashboard">
-        <div className="card col col-md-8 mx-center">
+        <div className="card col dash-user col-md-8 mx-center">
           <h5 className="user-card-header card-title">{currentUser.first_name}</h5>
           <img class="card-img-top" src={currentUser.avatar} alt="Card image cap" />
           <div className="card-body">

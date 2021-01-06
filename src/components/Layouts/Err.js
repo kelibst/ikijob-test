@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createError } from '../../store/actions/userAction'

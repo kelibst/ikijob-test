@@ -35,7 +35,7 @@ class NavBar extends Component {
               <Nav className="mr-auto">
               {currentUser.id &&  
                 <NavLink
-                to={`/dashboard${currentUser.id}`}
+                to={`/dashboard/${currentUser.id}`}
                 className="nav-item text-uppercase font-weight-bolder px-3"
               >
                 Dashboard
