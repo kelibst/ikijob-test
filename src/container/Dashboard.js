@@ -27,13 +27,13 @@ class Dashboard extends Component {
             {currentUser.first_name}
           </h5>
           <img
-            class="card-img-top"
+            className="card-img-top"
             src={
               currentUser && currentUser.avatar
                 ? currentUser.avatar
                 : "https://reqres.in/img/faces/2-image.jpg"
             }
-            alt="Card image cap"
+            alt="Card-img-cap"
           />
           <div className="card-body">
             <h6 className="card-user-name">

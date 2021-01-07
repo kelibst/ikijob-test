@@ -16,7 +16,6 @@ import { fetchUser } from "../store/actions/userAction";
 class App extends Component {
   componentDidMount(){
     const { currentUser, fetchUser } = this.props;
-    const curUser = localStorage.getItem("currentUser");
     let jwtId = localStorage.getItem('jwtId')
     jwtId = JSON.parse(jwtId)
     currentUser && jwtId &&
