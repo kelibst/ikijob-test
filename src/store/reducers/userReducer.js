@@ -9,7 +9,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_USERS":
-      debugger
+      
       return {
         ...state,
         users: action.payload,

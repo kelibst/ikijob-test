@@ -28,9 +28,9 @@ class MobileNav extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            {currentUser && currentUser.id &&  
+            {currentUser && currentUser.email &&  
               <NavLink
-              to={`/dashboard/${currentUser.id}`}
+              to={`/dashboard/${currentUser.email}`}
               className="nav-item text-uppercase font-weight-bolder px-3"
             >
               Dashboard
@@ -70,7 +70,7 @@ class MobileNav extends Component {
               >
                 <Icofont icon="play" /> Play
               </NavLink>
-              {currentUser && currentUser.id ? (
+              {currentUser && currentUser.email ? (
                 <Button
                   variant="danger"
                   className="text-white"

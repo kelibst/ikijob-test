@@ -13,7 +13,7 @@ class NavBar extends Component {
       logCurrentUserOut();
       localStorage.removeItem("currentUser");
       localStorage.removeItem("jwtId");
-      const { history } = this.props;  
+      const { history } = this.props;
       history.push("/login");
     };
     return (
@@ -30,9 +30,9 @@ class NavBar extends Component {
           IJIKOD
         </Navbar.Brand>
         <Nav className="mr-auto">
-          {currentUser && currentUser.id && (
+          {currentUser && currentUser.email && (
             <NavLink
-              to={`/dashboard/${currentUser.id}`}
+              to={`/dashboard/${currentUser.email}`}
               className="nav-item text-uppercase font-weight-bolder px-3"
             >
               Dashboard
@@ -62,7 +62,7 @@ class NavBar extends Component {
             <Icofont icon="play" /> Play
           </NavLink>
 
-          {currentUser && currentUser.id ? (
+          {currentUser && currentUser.email ? (
             <Button
               variant="danger"
               className="text-white"

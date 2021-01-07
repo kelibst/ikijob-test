@@ -13,8 +13,8 @@ class SignUp extends Component {
       userData: {
         email: '',
         password: '',
-        firstname: '',
-        lastname: '',
+        first_name: '',
+        last_name: '',
         password_confirmation: '',
       },
     };
@@ -23,7 +23,7 @@ class SignUp extends Component {
   componentDidUpdate(){
     const curUser = localStorage.getItem('currentUser');
     const { successWithMessage, currentUser, history } = this.props
-    if (currentUser.length || curUser){
+    if (currentUser.email){
       successWithMessage("You are Logged In.")
       history.push(`/dashboard/keli`)
     }
@@ -65,7 +65,7 @@ class SignUp extends Component {
           onSubmit={handleSubmit}
         >
 
-          <Form.Group controlId="firstname">
+          <Form.Group controlId="first_name">
             <Form.Control
               required
               type="text"
@@ -74,7 +74,7 @@ class SignUp extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="lastname">
+          <Form.Group controlId="last_name">
             <Form.Control
               required
               type="text"
