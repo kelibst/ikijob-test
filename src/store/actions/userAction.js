@@ -114,13 +114,12 @@ const fetchUsers = () => (dispatch) => {
     );
 };
 
-const logCurrentUserOut = () => (dispatch) => {
-  
-  const res = {
+const logCurrentUserOut = (res = {
     data: {},
-  };
+  }) => (dispatch) => {
+    
   dispatch({
-    type: "GET_USERS",
+    type: "AUTH_USER",
     payload: res.data,
   });
 };

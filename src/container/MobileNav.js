@@ -7,13 +7,25 @@ import { logCurrentUserOut } from "../store/actions/userAction";
 import "./NavBar.scss";
 
 class MobileNav extends Component {
+  componentDidMount() {
+    const { currentUser, logCurrentUserOut } = this.props;
+    let curUser = localStorage.getItem("currentUser");
+
+    curUser = JSON.parse(curUser);
+    !currentUser.email &&
+      curUser &&
+      curUser.data.email &&
+      logCurrentUserOut({
+        data: curUser,
+      });
+  }
   render() {
-    const { currentUser, logCurrentUserOut } = this.props
+    const { currentUser, logCurrentUserOut } = this.props;
     const logUserOut = () => {
-      localStorage.removeItem("currentUser");
-      localStorage.removeItem('jwtId');
-      const { history } = this.props;
       logCurrentUserOut();
+      localStorage.removeItem("currentUser");
+      localStorage.removeItem("jwtId");
+      const { history } = this.props;
       history.push("/login");
     };
     return (
@@ -23,11 +35,19 @@ class MobileNav extends Component {
             <span className="brand-icon">
               <Icofont icon="attachment" />
             </span>{" "}
-            AfrikaQuiz
+            IJIKOD
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
+              {currentUser && currentUser.email && (
+                <NavLink
+                  to={`/dashboard/${currentUser.email}`}
+                  className="nav-item text-uppercase font-weight-bolder px-3"
+                >
+                  Dashboard
+                </NavLink>
+              )}
               <NavLink
                 to={`/profile`}
                 className="nav-item text-uppercase font-weight-bolder px-3"
@@ -63,7 +83,7 @@ class MobileNav extends Component {
               >
                 <Icofont icon="play" /> Play
               </NavLink>
-              {currentUser.id ? (
+              {currentUser && currentUser.email ? (
                 <Button
                   variant="danger"
                   className="text-white"

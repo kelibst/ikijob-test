@@ -19,7 +19,7 @@ class Login extends Component {
 
   componentDidUpdate(){
     const { currentUser, history } = this.props;
-    currentUser.id
+    currentUser && currentUser.id
         && history.push(`/dashboard/${currentUser.id}`);
   }
   render() {
