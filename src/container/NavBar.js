@@ -7,6 +7,18 @@ import { logCurrentUserOut } from "../store/actions/userAction";
 import "./NavBar.scss";
 
 class NavBar extends Component {
+  componentDidMount() {
+    const { currentUser, logCurrentUserOut } = this.props;
+    let curUser = localStorage.getItem("currentUser");
+
+    curUser = JSON.parse(curUser);
+    !currentUser.email &&
+      curUser &&
+      curUser.data.email &&
+      logCurrentUserOut({
+        data: curUser,
+      });
+  }
   render() {
     const { currentUser, logCurrentUserOut } = this.props;
     const logUserOut = () => {

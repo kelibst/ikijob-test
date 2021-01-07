@@ -7,13 +7,25 @@ import { logCurrentUserOut } from "../store/actions/userAction";
 import "./NavBar.scss";
 
 class MobileNav extends Component {
+  componentDidMount() {
+    const { currentUser, logCurrentUserOut } = this.props;
+    let curUser = localStorage.getItem("currentUser");
+
+    curUser = JSON.parse(curUser);
+    !currentUser.email &&
+      curUser &&
+      curUser.data.email &&
+      logCurrentUserOut({
+        data: curUser,
+      });
+  }
   render() {
-    const { currentUser, logCurrentUserOut } = this.props
+    const { currentUser, logCurrentUserOut } = this.props;
     const logUserOut = () => {
       logCurrentUserOut();
       localStorage.removeItem("currentUser");
       localStorage.removeItem("jwtId");
-      const { history } = this.props;  
+      const { history } = this.props;
       history.push("/login");
     };
     return (
@@ -28,13 +40,14 @@ class MobileNav extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            {currentUser && currentUser.email &&  
-              <NavLink
-              to={`/dashboard/${currentUser.email}`}
-              className="nav-item text-uppercase font-weight-bolder px-3"
-            >
-              Dashboard
-            </NavLink>}
+              {currentUser && currentUser.email && (
+                <NavLink
+                  to={`/dashboard/${currentUser.email}`}
+                  className="nav-item text-uppercase font-weight-bolder px-3"
+                >
+                  Dashboard
+                </NavLink>
+              )}
               <NavLink
                 to={`/profile`}
                 className="nav-item text-uppercase font-weight-bolder px-3"

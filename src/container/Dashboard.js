@@ -1,16 +1,40 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createError, fetchUser } from "../store/actions/userAction";
+import {
+  createError,
+  fetchUser,
+  logCurrentUserOut,
+} from "../store/actions/userAction";
 
 class Dashboard extends Component {
+  componentDidMount() {
+    const { currentUser, logCurrentUserOut } = this.props;
+    let curUser = localStorage.getItem("currentUser");
 
+    curUser = JSON.parse(curUser);
+    !currentUser.email && curUser &&
+      curUser.data.email &&
+      logCurrentUserOut({
+        data: curUser,
+      });
+  }
   render() {
-      const { currentUser } = this.props
+    const { currentUser } = this.props;
     return (
       <div className="dashboard">
         <div className="card col dash-user col-md-8 mx-center">
-          <h5 className="user-card-header card-title">{currentUser.first_name}</h5>
-          <img class="card-img-top" src={currentUser && currentUser.avatar ? currentUser.avatar : 'https://reqres.in/img/faces/2-image.jpg' } alt="Card image cap" />
+          <h5 className="user-card-header card-title">
+            {currentUser.first_name}
+          </h5>
+          <img
+            class="card-img-top"
+            src={
+              currentUser && currentUser.avatar
+                ? currentUser.avatar
+                : "https://reqres.in/img/faces/2-image.jpg"
+            }
+            alt="Card image cap"
+          />
           <div className="card-body">
             <h6 className="card-user-name">
               {currentUser.first_name + " " + currentUser.last_name}
@@ -24,4 +48,8 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => ({
   currentUser: state.userData.currentUser,
 });
-export default connect(mapStateToProps, { createError, fetchUser })(Dashboard);
+export default connect(mapStateToProps, {
+  createError,
+  fetchUser,
+  logCurrentUserOut,
+})(Dashboard);

@@ -117,6 +117,7 @@ const fetchUsers = () => (dispatch) => {
 const logCurrentUserOut = (res = {
     data: {},
   }) => (dispatch) => {
+    
   dispatch({
     type: "AUTH_USER",
     payload: res.data,
